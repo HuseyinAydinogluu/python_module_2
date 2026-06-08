@@ -1,27 +1,29 @@
 class GardenError(Exception):
-    def __init__(self, message="Unknown garden error"):
-        Exception().__init__(message)
+    def __init__(self, message: str = "Unknown garden error") -> None:
+        Exception.__init__(self, message)
+
 
 class PlantError(GardenError):
-    def __init__(self, message="Unknown plant error"):
-        GardenError().__init__(message)
+    def __init__(self, message: str = "Unknown plant error") -> None:
+        GardenError.__init__(self, message)
+
 
 class WaterError(GardenError):
-    def __init__(self, message="Unknown water error"):
-        GardenError().__init__(message)
+    def __init__(self, message: str = "Unknown water error") -> None:
+        GardenError.__init__(self, message)
 
 
-def water_plant(plant_name):
+def water_plant(plant_name: str) -> None:
     if plant_name != plant_name.capitalize():
         raise PlantError(f"Invalid plant name to water: '{plant_name}'")
-    else:
-        print(f"Watering {plant_name}: [OK]")
+    print(f"Watering {plant_name}: [OK]")
 
-def test_water():
+
+def test_water() -> None:
     print("=== Garden Watering System ===\n")
     print("Testing valid plants...")
     try:
-        print(f"Opening watering system")
+        print("Opening watering system")
         water_plant("Tomato")
         water_plant("Lettuce")
         water_plant("Carrots")
@@ -32,9 +34,9 @@ def test_water():
     finally:
         print("Closing watering system\n")
 
-    print(f"Testing invalid plants..")
+    print("Testing invalid plants..")
     try:
-        print(f"Opening watering system")
+        print("Opening watering system")
         water_plant("Tomato")
         water_plant("lettuce")
         water_plant("Carrots")
@@ -43,9 +45,8 @@ def test_water():
         print(".. ending tests and returning to main")
     finally:
         print("Closing watering system\n")
-    
-    print(f"Cleanup always happens, even with errors!")
+
+    print("Cleanup always happens, even with errors!")
 
 
-        
 test_water()

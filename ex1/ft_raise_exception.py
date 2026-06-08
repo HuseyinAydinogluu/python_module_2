@@ -1,4 +1,4 @@
-def input_temperature(temp_str):
+def input_temperature(temp_str: str) -> int:
     temperature = int(temp_str)
     if temperature > 40:
         raise ValueError(f"{temperature}°C is too hot for plants (max 40°C)")
@@ -7,8 +7,9 @@ def input_temperature(temp_str):
 
     return temperature
 
-def test_temperature():
-    print(f" === Garden Temperature Checker ===")
+
+def test_temperature() -> None:
+    print(" === Garden Temperature Checker ===")
 
     test_values = ["25", "abc", "100", "-50"]
 
@@ -20,8 +21,7 @@ def test_temperature():
         except ValueError as error:
             print(f"Caught input_temperature error: {error}\n")
 
-    print(f"All tests completed - program didn't crash!")
+    print("All tests completed - program didn't crash!")
+
 
 test_temperature()
-
-
